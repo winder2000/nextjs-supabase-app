@@ -58,7 +58,7 @@ npm run lint     # eslint .
 
 - `proxy.ts`(matcher: 정적 파일 제외 전 경로)가 모든 요청을 가로채 인증 상태를 확인한다.
 - `/protected` 경로는 인증된 사용자만 접근 가능하다.
-- `/`, `/login`, `/auth/*` 경로는 미인증 상태에서도 접근 가능하다(리다이렉트 예외).
+- `/`, `/auth/*` 경로는 미인증 상태에서도 접근 가능하다(리다이렉트 예외). 실제 로그인 라우트는 `/auth/login`이며, `/login`이라는 경로 자체는 존재하지 않는다(코드의 `startsWith("/login")` 체크는 도달 불가능한 죽은 코드).
 - `app/auth/confirm/route.ts`가 이메일 확인(OTP) 처리를 담당한다.
 - 환경 변수(`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`)가 없으면 `proxy.ts`는 세션 체크를 자동으로 건너뛴다(`hasEnvVars` 체크).
 
@@ -68,7 +68,15 @@ npm run lint     # eslint .
 
 ## 환경 변수
 
-`.env.local`에 `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` 두 개만 필요하다.
+`.env.local`에 `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` 두 개만 필요하다. 키 이름은 `.env.example`에 값 없이 문서화되어 있다.
+
+## GitHub 저장소
+
+이 프로젝트는 상위 `Inflearn` 모노레포와 별개의 독립 git 저장소다. origin은 `https://github.com/winder2000/nextjs-supabase-app.git`(main 브랜치)으로 고정되어 있으며, 커밋/푸시는 항상 이 저장소를 대상으로 한다.
+
+## `.claude/` 구성
+
+`agents/`(code-reviewer, nextjs-app-developer, development-planner 등), `commands/`(git/commit·branch·merge·pr, docs/update-roadmap), `hooks/`(notification-hook.sh, stop-hook.sh), `skills/verify-app`이 구성되어 있다. `commands/git/commit.md`는 이모지+컨벤셔널 커밋 형식을 규정하지만 실제 관행과 다르므로 위 커밋 컨벤션 섹션을 따른다.
 
 ## MCP 서버 설정 (`.mcp.json`)
 
