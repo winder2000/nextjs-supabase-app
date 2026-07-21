@@ -30,6 +30,7 @@ npm run lint     # eslint .
 
 1. **Server Components / Route Handlers**: `lib/supabase/server.ts`의 `createClient()`
    - **중요**: Fluid compute 환경 대응을 위해 함수 내부에서 매 요청마다 새로 생성해야 한다 (전역 변수로 캐싱 금지)
+
    ```typescript
    import { createClient } from "@/lib/supabase/server";
 
@@ -40,6 +41,7 @@ npm run lint     # eslint .
    ```
 
 2. **Client Components**: `lib/supabase/client.ts`의 `createClient()` (`createBrowserClient` 기반)
+
    ```typescript
    "use client";
    import { createClient } from "@/lib/supabase/client";

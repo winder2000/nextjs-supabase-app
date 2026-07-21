@@ -145,12 +145,12 @@ auth/                   # 소문자
 
 ```typescript
 // ✅ 경로 별칭 사용 (권장)
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
-import { createClient } from '@/lib/supabase/server'
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { createClient } from "@/lib/supabase/server";
 
 // ❌ 상대 경로 사용 (금지)
-import { Button } from '../../../components/ui/button'
+import { Button } from "../../../components/ui/button";
 ```
 
 **📍 `components.json`에 정의된 별칭:**
@@ -159,7 +159,7 @@ import { Button } from '../../../components/ui/button'
 - `@/lib` → `lib`
 - `@/components/ui` → `components/ui`
 - `@/lib/utils` → `lib/utils`
-- `@/hooks` → `hooks` *(별칭만 정의되어 있고 실제 `hooks/` 폴더는 아직 없음)*
+- `@/hooks` → `hooks` _(별칭만 정의되어 있고 실제 `hooks/` 폴더는 아직 없음)_
 
 ## 📝 새 파일/폴더 추가 규칙
 
@@ -212,14 +212,14 @@ lib/supabase/            # 클라이언트/서버 클라이언트 외 로직 추
 
 ```typescript
 // 1. 외부 라이브러리
-import { NextPage } from 'next'
+import { NextPage } from "next";
 
 // 2. 내부 라이브러리 (@/ 경로)
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 // 3. 상대 경로
-import './component.css'
+import "./component.css";
 ```
 
 ### 3. Export 규칙
@@ -257,11 +257,11 @@ components/Auth/userProfile.tsx
 
 ```typescript
 // 혼재된 import
-import Button from '@/components/ui/button' // default
-import { Card } from '@/components/ui/card' // named
+import Button from "@/components/ui/button"; // default
+import { Card } from "@/components/ui/card"; // named
 
 // 깊은 상대 경로
-import { utils } from '../../../../lib/utils'
+import { utils } from "../../../../lib/utils";
 ```
 
 ## ✅ 체크리스트
